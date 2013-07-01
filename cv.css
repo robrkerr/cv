@@ -1,0 +1,58 @@
+/*
+ *= require jquery-ui/smoothness
+ *
+ */
+
+* {
+  padding:              0;
+  margin:               0;
+}
+
+html {
+  background:           white;
+}
+
+body {
+  font:                 13pt "Myriad Pro", Helvetica;
+  margin:               50px 10% 0px;
+  height:               100%;
+  padding:              30px;
+}
+
+.heading {
+  font:                 28pt "Myriad Pro", Helvetica;
+  padding-top:          20px;
+  padding-bottom:       20px;
+  margin-top:           20px;
+  border-bottom-width:  2px;
+  border-bottom-style:  solid;
+  border-bottom-color:  white;
+}
+
+.heading.hovering, .heading.active {
+  border-bottom-color:  black;
+}
+
+.subtext {
+  font:                 14pt "Myriad Pro", Helvetica;
+  overflow:             scroll;
+  background-color:     rgba(235,235,235,1.0);
+  -webkit-transition:   all 0.5s;
+  transition:           all 0.5s;
+  max-height:           0px;
+}
+
+.subtext_inner {
+  padding:              30px;
+}
+
+.subtext_inner div {
+  padding:              5px;
+  overflow:             hidden;
+}
+
+.expander {
+  display:              inline-block;
+  cursor:               pointer;
+}
+

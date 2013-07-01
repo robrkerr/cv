@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rob's CV</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+	<link href="cv.css?body=1" media="screen" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="cv_item">
+		<div class="heading"> My name is <span class="expander" style="color:rgba(0, 40, 200, 1)" style="color:rgba(0, 40, 200, 1)">Robert Kerr</span> </div>
+		<div class="subtext closed">
+			<div class="subtext_inner">
+				<div> Email: robrkerr 'at' gmail.com </div>
+				<div> Twitter: @robrkerr </div>
+				<div> Github: robrkerr </div>
+				<div> Phone: +61431587997 </div>
+				<div> Location: Melbourne, Australia </div>
+			</div>
+		</div>
+	</div>
+	<div class="cv_item">
+		<div class="heading"> I have a background in <span class="expander" style="color:rgba(200, 40, 0, 1)">something</span> </div>
+		<div class="subtext closed">
+			<div class="subtext_inner">
+				<div> Details </div>
+				<div> More details </div>
+				<div> Maybe a qualification </div>
+				<div> A place I worked </div>
+				<div> A much longer detail to test how text is wrapped normally and with a smaller window or something </div>
+			</div>
+		</div>
+	</div>
+	<div class="cv_item">
+		<div class="heading"> I have a <span class="expander" style="color:rgba(0, 200, 40, 1)">skill</span> </div>
+		<div class="subtext closed">
+			<div class="subtext_inner">
+				<div> Evidence 1 </div>
+				<div> Another point </div>
+			</div>		
+		</div>
+	</div>
+	<div class="cv_item">
+		<div class="heading"> Something I am interested in is <span class="expander" style="color:rgba(200, 140, 0, 1)">this particular thing</span> </div>
+		<div class="subtext closed">
+			<div class="subtext_inner">
+				<div> Something more about that </div>
+				<div> Something else </div>
+			</div>		
+		</div>
+	</div>
+	<script>
+		var max_subtext_height = 400;
+		$(".subtext.closed").each(function() {
+			var content = $(this);
+			var heading_box = content.parent(".cv_item").find(".heading");
+    	content.on('transitionEnd webkitTransitionEnd transitionend oTransitionEnd msTransitionEnd', function(e){
+		    if (content.hasClass('open')) {
+		      content.css('max-height', max_subtext_height);
+		    } else if (content.hasClass('closed')) {
+		    	heading_box.removeClass('active');
+		    }
+			});
+    });
+		$(document).ready(function() {
+			$(".expander").hover(
+			  function () {
+			    $(this).addClass("hovering");
+			    $(this).parent(".heading").addClass("hovering");
+			  },
+			  function () {
+			    $(this).removeClass("hovering");
+			    $(this).parent(".heading").removeClass("hovering");
+			  }
+			);
+			$(".expander").click(function() {
+				var heading_box = $(this).parent(".heading");
+				var content = heading_box.parent(".cv_item").find(".subtext");
+				content.inner = content.find(".subtext_inner");
+		    content.toggleClass('open closed');
+	    	content.contentHeight = content.outerHeight();
+	    	if (content.hasClass('closed')) {
+	        content.removeClass('transitions');
+	        content.css('max-height', content.contentHeight);
+	        setTimeout( function() { 
+	        	content.addClass('transitions').css({'max-height': 0});
+	        }, 10);
+		    } else if (content.hasClass('open')) {  
+		    	heading_box.addClass("active");
+		      content.contentHeight += content.inner.outerHeight(); 
+		      if (content.contentHeight < max_subtext_height) {
+		      	content.css({'max-height': content.contentHeight});
+		      } else {
+		      	content.css({'max-height': max_subtext_height});
+		      }
+		    }
+			});
+		});
+	</script>
+</body>
+</html>
