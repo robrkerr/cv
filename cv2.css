@@ -137,11 +137,11 @@ body {
 }
 
 .hovering .cv_basic, .hovering .cv_full {
-	box-shadow:           5px 5px 20px -2px black;
+	box-shadow:           4px 4px 20px 0px black;
 } 
 
 .transitioning .cv_basic, .transitioning .cv_full {
-	box-shadow:           5px 5px 20px -2px black;
+	box-shadow:           4px 4px 20px 0px black;
 }
 
 .button {

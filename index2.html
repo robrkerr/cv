@@ -6,6 +6,7 @@
   <link href="cv2.css?body=1" media="screen" rel="stylesheet" type="text/css">
 	<script src="js/jquery-1.9.1.js"></script>
 	<script src="js/jquery-ui-1.10.3.custom.js"></script>
+	<script src="js/modernizr-latest.js"></script>
 </head>
 <body>
 	<div class="full_width_container">
@@ -70,7 +71,7 @@
 						<div><i>Work, 2009-2010, Brisbane</i><span style="display:block">Development of software to analyse microscope images of cells at the Queensland Brain Institute</span></div>
 						<div><i>Study, 2010-present, Melbourne</i><span style="display:block">PhD into the mathematical modelling of synaptic plasticity in neural systems at the University of Melbourne</span></div>
 						<div><i>Other experience</i><span style="display:block">Using different programming languages, including: C++, Ruby, Python and Matlab</span></div>
-						<div><i>Selected Publications</i><span style="display:block"><a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002897">PLoS Computational Biology, 2013</a></span></div>
+						<div><i>Publications</i><span style="display:block"><a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002897">PLoS Computational Biology, 2013</a></span></div>
 					</div>
 				</div>
 			</div>
@@ -89,7 +90,7 @@
 						Recently acquired skills
 					</div>
 					<div class="subtext">
-						<div> I recently built a <a href="http://www.giftrappd.com">rhyming dictionary</a> (Rails) </div>
+						<div> I am building a <a href="https://github.com/robrkerr/giftrapped">rhyming dictionary</a> (Rails) </div>
 						<div> And this curriculum vitae (HTML and CSS) </div>
 					</div>
 				</div>		
@@ -109,7 +110,7 @@
 						Professional interests
 					</div>
 					<div class="subtext">
-						<div> My background lies in modelling how systems, such as our brains or transportation networks, function or operate in order to gain better understanding. I addition to this, I have recently become interested in how the findings of such research can be better described, presented, and critically evaluated. I think this is important more generally to communicate data and ideas relating to areas such as science, economics, and technology. I want to improve the way that information and concepts can be visualized and conveyed by creating more interactive and less linear means of doing this. </div>
+						<div> My background is in modelling how systems, such as our brains or transportation networks, function or operate. The focus of this work has been to better understand how complex systems work. I addition to this, I have recently become interested in how the findings of such research can be better described, presented, and critically evaluated. More generally, I think there is value in clearly communicating data and ideas relating to areas such as science, economics, and technology. I want to improve the way that information and concepts can be visualized and conveyed by creating more interactive and less linear means of doing this. </div>
 					</div>
 				</div>		
 			</div>
@@ -132,7 +133,7 @@
 						<div> <a href="http://www.bme.unimelb.edu.au/people/staff.php?person_ID=16545"> A/Prof. David Grayden</a> (PhD Supervisor) </div>
 			   		<div> <a href="http://www.mech.unimelb.edu.au/people/staff.php?person_ID=401"> Prof. Doreen Thomas</a> (PhD Supervisor) </div>
 			   		<div> <a href="http://cns.qbi.uq.edu.au/index_geoff.html"> Prof. Geoff Goodhill</a> (Employer at the Queensland Brain Institute) </div>
-			   		<div> <a href="http://au.linkedin.com/in/timveitch"> Tim Veitch</a> (Employer at Veitch Lister Consulting </div>
+			   		<div> <a href="http://au.linkedin.com/in/timveitch"> Tim Veitch</a> (Employer at Veitch Lister Consulting) </div>
 		   		</div>
 		   	</div>
 			</div>
@@ -180,40 +181,43 @@
 			});
 		});
 		$(document).ready(function() {
-			$(".cv_basic .heading").hover(function() {
-				var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
-				cv_item.addClass('hovering');
-				if (cv_item.hasClass("button")) {
-					$(".cv_item").each(function() {
-						$(this).addClass('hovering');
-					});
-				}
-			}, function() {
-				var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
-				cv_item.removeClass('hovering');
-				if (cv_item.hasClass("button")) {
-					$(".cv_item").each(function() {
-						$(this).removeClass('hovering');
-					});
-				}
-			});
-			$(".cv_full .heading").hover(function() {
-				var cv_item = $(this).parent(".cv_full").parent(".cv_item");
-				cv_item.addClass('hovering');
-				if (cv_item.hasClass("button")) {
-					$(".cv_item").each(function() {
-						$(this).addClass('hovering');
-					});
-				}
-			}, function() {
-				var cv_item = $(this).parent(".cv_full").parent(".cv_item");
-				cv_item.removeClass('hovering');
-				if (cv_item.hasClass("button")) {
-					$(".cv_item").each(function() {
-						$(this).removeClass('hovering');
-					});
-				}
-			});
+			if (!Modernizr.touch) {
+				console.log("Hello");
+				$(".cv_basic .heading").hover(function() {
+					var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
+					cv_item.addClass('hovering');
+					if (cv_item.hasClass("button")) {
+						$(".cv_item").each(function() {
+							$(this).addClass('hovering');
+						});
+					}
+				}, function() {
+					var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
+					cv_item.removeClass('hovering');
+					if (cv_item.hasClass("button")) {
+						$(".cv_item").each(function() {
+							$(this).removeClass('hovering');
+						});
+					}
+				});
+				$(".cv_full .heading").hover(function() {
+					var cv_item = $(this).parent(".cv_full").parent(".cv_item");
+					cv_item.addClass('hovering');
+					if (cv_item.hasClass("button")) {
+						$(".cv_item").each(function() {
+							$(this).addClass('hovering');
+						});
+					}
+				}, function() {
+					var cv_item = $(this).parent(".cv_full").parent(".cv_item");
+					cv_item.removeClass('hovering');
+					if (cv_item.hasClass("button")) {
+						$(".cv_item").each(function() {
+							$(this).removeClass('hovering');
+						});
+					}
+				});
+			}
 			$(".cv_basic .heading").click(function(event) {
 				var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
 				cv_item.toggleClass('basic_showing full_showing');
