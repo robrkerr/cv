@@ -158,6 +158,9 @@
 			$(this).bind('transitionend', function() {
 				$(this).removeClass('transitioning');
 			});
+			$(this).bind('webkitTransitionEnd', function() {
+				$(this).removeClass('transitioning');
+			});
 		});
 		$(window).resize(function() {
 			$(".cv_full").each(function() {
@@ -182,7 +185,6 @@
 		});
 		$(document).ready(function() {
 			if (!Modernizr.touch) {
-				console.log("Hello");
 				$(".cv_basic .heading").hover(function() {
 					var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
 					cv_item.addClass('hovering');
