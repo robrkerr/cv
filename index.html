@@ -188,7 +188,7 @@
 				$(".cv_basic .heading").hover(function() {
 					var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
 					cv_item.addClass('hovering');
-					if (cv_item.hasClass("button")) {
+					if (cv_item.hasClass('button')) {
 						$(".cv_item").each(function() {
 							$(this).addClass('hovering');
 						});
@@ -196,7 +196,7 @@
 				}, function() {
 					var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
 					cv_item.removeClass('hovering');
-					if (cv_item.hasClass("button")) {
+					if (cv_item.hasClass('button')) {
 						$(".cv_item").each(function() {
 							$(this).removeClass('hovering');
 						});
@@ -205,15 +205,17 @@
 				$(".cv_full .heading").hover(function() {
 					var cv_item = $(this).parent(".cv_full").parent(".cv_item");
 					cv_item.addClass('hovering');
-					if (cv_item.hasClass("button")) {
+					if (cv_item.hasClass('button')) {
 						$(".cv_item").each(function() {
-							$(this).addClass('hovering');
+							if ($(this).hasClass("full_showing")) {
+								$(this).addClass('hovering');
+							}
 						});
 					}
 				}, function() {
 					var cv_item = $(this).parent(".cv_full").parent(".cv_item");
 					cv_item.removeClass('hovering');
-					if (cv_item.hasClass("button")) {
+					if (cv_item.hasClass('button')) {
 						$(".cv_item").each(function() {
 							$(this).removeClass('hovering');
 						});
