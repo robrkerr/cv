@@ -3,18 +3,15 @@
 <head>
   <title>Rob's CV</title>
   <link href="css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
-  <link href="cv.css?body=1" media="screen" rel="stylesheet" type="text/css">
 	<script src="js/jquery-1.9.1.js"></script>
 	<script src="js/jquery-ui-1.10.3.custom.js"></script>
 	<script src="js/modernizr-latest.js"></script>
+	<script src="js/yepnope.js"></script>
+	<meta name="viewport" content="initial-scale=1.0">
+	<!-- <meta name="viewport" content="initial-scale=1.0,user-scalable=no"> -->
 </head>
 <body>
 	<div class="full_width_container">
-		<div class="title_area">
-			<div class="title"> 
-				<!-- Resume of Robert Kerr -->
-			</div>
-		</div>
 		<div class="button_area">
 			<div id="expand_all" class="cv_item button basic_showing">
 				<div class="cv_basic">
@@ -44,8 +41,8 @@
 					</div>
 					<div class="subtext">
 						<div><span class="detail_description"> Email: </span><span> robrkerr@gmail.com </span></div>
-						<div><span class="detail_description"> Twitter: </span><span> @robrkerr </span></div>
-						<div><span class="detail_description"> Github: </span><span> robrkerr </span></div>
+						<div><span class="detail_description"> Twitter: </span><span> <a href="https://twitter.com/robrkerr">@robrkerr</a></span></div>
+						<div><span class="detail_description"> Github: </span><span> <a href="https://github.com/robrkerr/">robrkerr</a></span></div>
 						<div><span class="detail_description"> Phone: </span><span> +61431587997 </span></div>
 						<div><span class="detail_description"> Location: </span><span> Melbourne, Australia </span></div>
 					</div>
@@ -91,7 +88,7 @@
 					</div>
 					<div class="subtext">
 						<div> I am building a <a href="https://github.com/robrkerr/giftrapped">rhyming dictionary</a> (Rails) </div>
-						<div> And this curriculum vitae (HTML and CSS) </div>
+						<div> And this curriculum vitae (HTML & CSS) </div>
 					</div>
 				</div>		
 			</div>
@@ -139,137 +136,11 @@
 			</div>
 		</div>
 	</div>
-		
 	<script>
-		$(".cv_full").each(function() {
-			var shift = $(this).outerHeight()*0.5;
-			$(this).css({'-webkit-transform': 'rotateX(90deg) translateZ(' + shift + 'px) translateY(-' + shift + 'px) rotateY(180deg) rotateZ(180deg)'});
-			$(this).css({'transform': 'rotateX(90deg) translateZ(' + shift + 'px) translateY(-' + shift + 'px) rotateY(180deg) rotateZ(180deg)'});
-		});
-		$(".cv_basic").each(function() {
-				var shift = $(this).outerHeight()*0.5;
-				$(this).parent(".cv_item").css({'-webkit-transform-origin': '0px ' + shift + 'px -' + shift + 'px'});
-				$(this).parent(".cv_item").css({'-transform-origin': '0px ' + shift + 'px -' + shift + 'px'});
-			});
-		$("#expand_all").parent(".button_area").parent(".full_width_container").css({'height': 100});
-		$(".cv_item").each(function() {
-			var new_height = $(this).find(".cv_basic").outerHeight();
-			$(this).parent(".cv_item_area").parent(".full_width_container").css({'height': new_height});
-			$(this).bind('transitionend', function() {
-				$(this).removeClass('transitioning');
-			});
-			$(this).bind('webkitTransitionEnd', function() {
-				$(this).removeClass('transitioning');
-			});
-		});
-		$(window).resize(function() {
-			$(".cv_full").each(function() {
-				var shift = $(this).outerHeight()*0.5;
-				$(this).css({'-webkit-transform': 'rotateX(90deg) translateZ(' + shift + 'px) translateY(-' + shift + 'px) rotateY(180deg) rotateZ(180deg)'});
-				$(this).css({'transform': 'rotateX(90deg) translateZ(' + shift + 'px) translateY(-' + shift + 'px) rotateY(180deg) rotateZ(180deg)'});
-			});
-			$(".cv_basic").each(function() {
-				var shift = $(this).outerHeight()*0.5;
-				$(this).parent(".cv_item").css({'-webkit-transform-origin': '0px ' + shift + 'px -' + shift + 'px'});
-				$(this).parent(".cv_item").css({'-transform-origin': '0px ' + shift + 'px -' + shift + 'px'});
-			});
-			$(".cv_item").each(function() {
-				var new_height;
-				if ($(this).hasClass("basic_showing")) {
-					new_height = $(this).find(".cv_basic").outerHeight();
-				} else {
-					new_height = $(this).find(".cv_full").outerHeight();
-				}
-				$(this).parent(".cv_item_area").parent(".full_width_container").css({'height': new_height});
-			});
-		});
-		$(document).ready(function() {
-			if (!Modernizr.touch) {
-				$(".cv_basic .heading").hover(function() {
-					var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
-					cv_item.addClass('hovering');
-					if (cv_item.hasClass('button')) {
-						$(".cv_item").each(function() {
-							$(this).addClass('hovering');
-						});
-					}
-				}, function() {
-					var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
-					cv_item.removeClass('hovering');
-					if (cv_item.hasClass('button')) {
-						$(".cv_item").each(function() {
-							$(this).removeClass('hovering');
-						});
-					}
-				});
-				$(".cv_full .heading").hover(function() {
-					var cv_item = $(this).parent(".cv_full").parent(".cv_item");
-					cv_item.addClass('hovering');
-					if (cv_item.hasClass('button')) {
-						$(".cv_item").each(function() {
-							if ($(this).hasClass("full_showing")) {
-								$(this).addClass('hovering');
-							}
-						});
-					}
-				}, function() {
-					var cv_item = $(this).parent(".cv_full").parent(".cv_item");
-					cv_item.removeClass('hovering');
-					if (cv_item.hasClass('button')) {
-						$(".cv_item").each(function() {
-							$(this).removeClass('hovering');
-						});
-					}
-				});
-			}
-			$(".cv_basic .heading").click(function(event) {
-				var cv_item = $(this).parent(".cv_basic").parent(".cv_item");
-				cv_item.toggleClass('basic_showing full_showing');
-				cv_item.addClass('transitioning');
-				var new_height = cv_item.find(".cv_full").outerHeight();
-				cv_item.parent(".cv_item_area").parent(".full_width_container").css({'height': new_height});
-				if (cv_item.hasClass("button")) {
-					$(".cv_item").each(function() {
-						if ($(this).hasClass('basic_showing')) {
-							$(this).removeClass('basic_showing');
-							$(this).addClass('full_showing');
-							$(this).addClass('transitioning');
-						}
-						var new_height = $(this).find(".cv_full").outerHeight();
-						$(this).parent(".cv_item_area").parent(".full_width_container").css({'height': new_height});
-					});
-				}
-				if ($("#expand_all").hasClass('basic_showing')) {
-					$("#expand_all").removeClass('basic_showing');
-					$("#expand_all").addClass('full_showing');
-					$("#expand_all").addClass('transitioning');	
-				}
-			});
-			$(".cv_full .heading").click(function(event) {
-				if ($(event.target).is("a")) return;
-				var cv_item = $(this).parent(".cv_full").parent(".cv_item");
-				cv_item.toggleClass('basic_showing full_showing');
-				cv_item.addClass('transitioning');
-				var new_height = cv_item.find(".cv_basic").outerHeight();
-				cv_item.parent(".cv_item_area").parent(".full_width_container").css({'height': new_height});
-				if (cv_item.hasClass("button")) {
-					$(".cv_item").each(function() {
-						if ($(this).hasClass('full_showing')) {
-							$(this).removeClass('full_showing');
-							$(this).addClass('basic_showing');
-							$(this).addClass('transitioning');
-						}
-						var new_height = $(this).find(".cv_basic").outerHeight();
-						$(this).parent(".cv_item_area").parent(".full_width_container").css({'height': new_height});
-					});
-				} else if ($('.cv_item.full_showing').length == 1) {
-					if ($("#expand_all").hasClass('full_showing')) {
-						$("#expand_all").removeClass('full_showing');
-						$("#expand_all").addClass('basic_showing');	
-						$("#expand_all").addClass('transitioning');
-					}
-				}
-			});
+		yepnope({
+			test: Modernizr.csstransforms3d,
+			yep: ['css/cv-transforms.css','js/cv-transforms.js'],
+			nope: 'css/cv-basic.css'
 		});
 	</script>
 </body>
