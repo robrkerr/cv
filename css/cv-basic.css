@@ -1,0 +1,71 @@
+
+* {
+  padding:              0;
+  margin:               0;
+}
+
+html {
+  background:           white;
+}
+
+body {
+  font:                 14pt Helvetica;
+  margin:               0px 10% 0px;
+  height:               100%;
+  padding:              1em;
+}
+
+.heading {
+  font-size:            1.8em;
+  padding:              0.6em;
+}
+
+.subtext {
+  padding:              0em 1em 1em;
+}
+
+.subtext div {
+  padding:              0.2em;
+  line-height:          1.5;
+  overflow:             hidden;
+}
+
+.detail_description {
+  width:                6em;
+}
+
+.cv_basic {
+	background-color:     rgba(255,255,255,1.0);
+}
+
+.cv_full {
+	background-color:     rgba(255,255,255,1.0);
+}
+
+.cv_full .heading {
+	height: 0px;
+	overflow: hidden;
+	padding: 0px;
+}
+
+.full_width_container {
+	width:                100%;
+	margin-bottom:        0.0em;
+}
+
+.cv_item_area {
+	width:                100%;
+}
+
+.button_area {
+	height: 0px;
+	overflow: hidden;
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+  body { font-size: 10pt; margin: 0 5%; }
+}
+
+@media (max-width: 400px) {
+  body { font-size: 8pt; margin: 0 5%; }
+}
